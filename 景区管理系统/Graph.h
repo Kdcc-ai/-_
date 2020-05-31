@@ -28,11 +28,8 @@ bool InsertVex(Vex sVex);
 bool InsertEdge(Edge sEdge);
 Vex GetVex(int nVex);
 int FindEdge(int nVex, Edge aEdge[]);
-
 void DFS(int nVex, bool bVisited[], int &nIndex, PathList &pList);
 void DFSTraverse(int nVex, PathList &pList);
-
 int FindShortPath(int nVexStart, int nVexEnd, Edge aPath[]);
-
 int FindMinTree(int nStart, Edge aEdge[]);
 #endif //GRAPH_H_INCLUDED

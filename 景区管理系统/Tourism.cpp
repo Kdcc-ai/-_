@@ -59,7 +59,7 @@ void GetSpotInfo(void)
 	int Num;
 	cin >> Num;
 	if (Num >= m_Graph.m_nVexNum) {
-		cout << "编号输入错误" << endl;
+		cout << "编号输入错误 默认退出" << endl;
 		return;
 	}
 	Vex vex = GetVex(Num);
@@ -86,7 +86,7 @@ void TravelPath() {
 	int Num;
 	cin >> Num;
 	if (Num < 0 || Num >= m_Graph.m_nVexNum) {
-		cout << "编号输入错误" << endl;
+		cout << "编号输入错误 默认退出" << endl;
 		return;
 	}
 	cout << "导航路线为：" << endl;
@@ -123,7 +123,7 @@ void FindShortPath(void) {
 	cout << "请输入终点的编号：" << endl;
 	cin >> nEnd;
 	if (nStart > nEnd || nEnd >= m_Graph.m_nVexNum) {
-		cout << "编号输入错误" << endl;
+		cout << "编号输入错误 默认退出" << endl;
 		return;
 	}
 	if (nStart == nEnd) {
@@ -152,16 +152,17 @@ void DesignPath(void){
 	int nStart;
 	cin >> nStart;
 	if (nStart!=0&&nStart!=n) {
-		cout << "编号输入错误" << endl;
+		cout << "编号输入错误 默认退出" << endl;
 		return;
 	}
 	Edge aEdge[20];
-	int Num = FindMinTree(nStart, aEdge);
+	int Num = FindMinTree(nStart, aEdge),Path=0;
 	//输出
 	cout << "在以下两个景点之间铺设电路：" << endl;
-	//cout << Num;
-     //for (int i = 0; i < Num; i++){
-	//	cout << m_Graph.m_aVexs[aEdge[i].vex1].name << " - " << m_Graph.m_aVexs[aEdge[i].vex2].name << " "
-		//	<< aEdge[i].weight << "m" << endl;
-	//}
+    for (int i = 0; i < Num; i++){
+		cout << m_Graph.m_aVexs[aEdge[i].vex1].name << " - " << m_Graph.m_aVexs[aEdge[i].vex2].name << " "
+			<< aEdge[i].weight << "m" << endl;
+		Path += aEdge[i].weight;
+	}
+	cout << "铺设电路的总长度为：" << Path <<"m"<< endl;
 }

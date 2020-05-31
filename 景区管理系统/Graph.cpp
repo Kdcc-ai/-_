@@ -144,8 +144,7 @@ int FindShortPath(int nVexStart, int nVexEnd, Edge aPath[]) {
 	//cout << dist[nVexEnd] << endl;
 	int Num = 0; //总共Num条路径
 	int i = nVexEnd;//从终点开始回溯
-	while (i != nVexStart)
-	{
+	while (i != nVexStart){
 		aPath[Num].vex2 = i;
 		aPath[Num].vex1 = pre[i];
 		aPath[Num].weight = m_Graph.m_aAdjMatrix[pre[i]][i];
@@ -184,18 +183,16 @@ int FindMinTree(int nStart,Edge aEdge[]) {
 		}
 		flag[k] = 1;
 		for (int j = 0; j <m_Graph.m_nVexNum ; j++){
-			if (flag[j] == 0 && m_Graph.m_aAdjMatrix[k][j] < lowcost[j]) {
+			if (flag[j] == 0 && m_Graph.m_aAdjMatrix[k][j] < lowcost[j]&&m_Graph.m_aAdjMatrix[k][j]!=0) {
 				lowcost[j] = m_Graph.m_aAdjMatrix[k][j];
 				closest[j] = k;
 			}
 		}
 		flag[closest[k]] = 1;
-
 		aEdge[Num].vex1 = closest[k];
 		aEdge[Num].vex2 = k;
 		aEdge[Num].weight = m_Graph.m_aAdjMatrix[closest[k]][k];
 		Num++;
-		//cout << closest[k] << " " << k << " " << m_Graph.m_aAdjMatrix[closest[k]][k] << endl;
 	}
 	return Num;
 }
